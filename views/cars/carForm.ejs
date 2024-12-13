@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Form</title>
+    <link rel="stylesheet" href="/stylesheets/cars/form.css" />
+  </head>
+  <body>
+    <form
+      action="<%= '/cars/update/' + (car?.id ? car?.id : '')%>"
+      method="post"
+    >
+      <label
+        >Brand:
+        <input type="text" name="brand" value="<%= car?.brand%>" required />
+      </label>
+      <label
+        >Model:
+        <input type="text" name="model" value="<%= car?.model%>" required />
+      </label>
+      <label
+        >Year of Production:
+        <input
+          type="number"
+          name="year_of_production"
+          value="<%= car?.year_of_production%>"
+          required
+        />
+      </label>
+      <label
+        >Plate Number:
+        <input
+          type="text"
+          name="plate_number"
+          value="<%= car?.plate_number%>"
+          required
+        />
+      </label>
+
+      <button type="submit"><%=car?.id? 'Update' : 'Add'%></button>
+    </form>
+    <a href="/cars">
+      <button>Back to List</button>
+    </a>
+    <div class="errors-container">
+      <ul>
+        <%for (const err of errors){%>
+        <li><%= err.msg%></li>
+        <%}%>
+      </ul>
+    </div>
+  </body>
+</html>
